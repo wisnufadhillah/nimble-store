@@ -23,7 +23,8 @@
 <body class="bg-light-gray relative py-[24px] px-[16px] lg:pt-[32px] lg:pb-[68px] lg:px-[60px]">
     <!-- ======= HEADER SECTION START ======= -->
     <header
-        class="container p-[15px] flex items-center justify-between bg-off-white rounded-[12px] lg:py-[18px] px-[32px] lg:rounded-[24px]">
+        class="container relative p-[15px] flex items-center justify-between bg-off-white rounded-[12px] lg:py-[18px] px-[32px] lg:rounded-[24px]">
+
         <div class="hidden items-center justify-center gap-[40px] lg:flex">
             <a href="<?= base_url('home'); ?>"
                 class="text-decoration-none nav-link font-rubik transition-all duration-300 text-lg font-medium"
@@ -40,32 +41,32 @@
         </div>
         <img src="<?= base_url('public/icons/header/hamburger-menu.png'); ?>" alt="hamburger-menu"
             class="block w-[20px] lg:hidden" loading="lazy" id="hamburger-menu">
-        <h3 class="font-rubik font-bold text-[25px] lg:text-[40px] cursor-pointer text-dark-charcoal"
+
+        <h3 class="absolute left-1/2 -translate-x-1/2 font-rubik font-bold text-[25px] lg:text-[40px] cursor-pointer text-dark-charcoal"
             onclick="location.href='<?= base_url('home'); ?>'">NIMBLE</h3>
-        <div class="flex items-center gap-[9px] lg:gap-[40px]"></div>
+
         <div class="flex items-center gap-[9px] lg:gap-[40px]">
-            <!-- belum login -->
             <?php if (!$this->session->userdata('user_logged_in')): ?>
-                <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
-                    class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
-                    loading="lazy" onclick="location.href='<?= base_url('login'); ?>'">
+            <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
+                class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
+                loading="lazy" onclick="location.href='<?= base_url('login'); ?>'">
             <?php endif; ?>
-            <!-- udah login sebagai user -->
+
             <?php if ($this->session->userdata('user_logged_in') && $this->session->userdata('role') == 'user'): ?>
-                <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
-                    class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
-                    loading="lazy" onclick="location.href='<?= base_url('user/dashboard'); ?>'">
-                <!-- udah login sebagai admin -->
+            <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
+                class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
+                loading="lazy" onclick="location.href='<?= base_url('user/dashboard'); ?>'">
+
             <?php elseif ($this->session->userdata('user_logged_in') && $this->session->userdata('role') == 'admin'): ?>
-                <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
-                    class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
-                    loading="lazy" onclick="location.href='<?= base_url('admin/dashboard'); ?>'">
+            <img src="<?= base_url('public/icons/header/user-icon.png'); ?>" alt="user-icon"
+                class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
+                loading="lazy" onclick="location.href='<?= base_url('admin/dashboard'); ?>'">
             <?php endif; ?>
-            <!-- Keranjang belanja -->
+
             <?php if ($this->session->userdata('user_logged_in') && $this->session->userdata('role') != 'admin'): ?>
-                <img src="<?= base_url('public/icons/header/shopping-cart.png'); ?>" alt="shopping-cart"
-                    class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
-                    loading="lazy" onclick="location.href='<?= base_url('cart'); ?>'">
+            <img src="<?= base_url('public/icons/header/shopping-cart.png'); ?>" alt="shopping-cart"
+                class="block w-[20px] cursor-pointer duration-300 transition-all hover:scale-105 lg:w-[24px]"
+                loading="lazy" onclick="location.href='<?= base_url('cart'); ?>'">
             <?php endif; ?>
         </div>
     </header>
